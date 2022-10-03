@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        {%~ for element in up %}
+            {%~ if element.action == 'create_table' %}
+{{ include('create.twig') }}
+            {%~ elseif element.action == 'alter_table' %}
+{{ include('alter.twig') }}
+            {%~ endif %}
+            {%~ if loop.last != true %}
+
+            {%~ endif %}
+        {%~ endfor %}
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        {%~ for element in down %}
+            {%~ if element.action == 'drop_table' %}
+        {{connection|raw}}dropIfExists('{{ element.table }}');
+            {%~ elseif element.action == 'drop_index' %}
+{{ include('alter.twig') }}
+            {%~ endif %}
+            {%~ if loop.last != true %}
+
+            {%~ endif %}
+        {%~ endfor %}
+    }
+};

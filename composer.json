@@ -1,0 +1,43 @@
+{
+    "name": "adetxt/laravel-migraml",
+    "description": "Convert YAML to Laravel Migration",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Adetxt\\Migraml\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adeardo Dora Harnanda",
+            "email": "adetxt151@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "^9.0",
+        "illuminate/console": "^9.0",
+        "illuminate/filesystem": "^9.0",
+        "symfony/yaml": "^5.1|~6.0",
+        "twig/twig": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "pestphp/pest": "^1.21",
+        "symfony/var-dumper": "6.2.x-dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Adetxt\\Migraml\\MigramlServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
